@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-import type { PostType } from "../../service/types";
+import type { PostType, IPostData } from "../../service/types";
 import { getLimitedPosts } from "../../service/api";
 
 export default function DashPosts() {
-  const [postsData, setPostsData] = useState<PostType[]>([]);
+  const [postsData, setPostsData] = useState<IPostData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchRecentPosts = async () => {
       try {
         // Fetch latest 3 posts
-        const postRes: PostType[] = await getLimitedPosts(3);
+        const postRes: IPostData[] = await getLimitedPosts(3);
 
         setPostsData(postRes);
       } catch (error) {
