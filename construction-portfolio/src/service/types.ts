@@ -96,7 +96,7 @@ export interface GetProjectsResponse {
 
 export interface IPostData {
   _id: string;
-  title: string;
+  postTitle: string;
   description: string;
   contentTitleTwo: string;
   contentTitle: string;
@@ -142,7 +142,7 @@ export interface IPostImage {
 /** The subset of a post/project that's editable as plain text fields. */
 export type IPostMini = Pick<
   IPostData,
-  "title" | "description" | "contentTitle" | "contentTitleTwo" | "content" | "quote" | "contentTwo"
+  "postTitle" | "description" | "contentTitle" | "contentTitleTwo" | "content" | "quote" | "contentTwo"
 >;
 
 export interface IEditableImage {

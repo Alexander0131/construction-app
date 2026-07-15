@@ -47,7 +47,7 @@ export default function DashPosts() {
               {post.images.length > 0 && (
                 <img
                   src={post.images[0].url}
-                  alt={post.title}
+                  alt={post.postTitle}
                   className="h-24 w-24 rounded-xl object-cover"
                 />
               )}
@@ -55,7 +55,7 @@ export default function DashPosts() {
               {/* Content */}
               <div className="flex flex-1 flex-col overflow-hidden">
                 <h3 className="truncate text-lg font-semibold text-slate-800">
-                  {post.title}
+                  {post.postTitle}
                 </h3>
 
                 {/* Post Content */}
