@@ -202,34 +202,34 @@ export default function PostDisplay({
     setSlot(null);
   }
 
-  function replaceGalleryImage(id: string, file: File) {
-    setGalleryImages((prev) =>
-      prev.map((img) => {
-        if (img.id !== id) return img;
-        revokeIfBlob(img.url);
-        return { ...img, file, url: URL.createObjectURL(file) };
-      })
-    );
-  }
+  // function replaceGalleryImage(id: string, file: File) {
+  //   setGalleryImages((prev) =>
+  //     prev.map((img) => {
+  //       if (img.id !== id) return img;
+  //       revokeIfBlob(img.url);
+  //       return { ...img, file, url: URL.createObjectURL(file) };
+  //     })
+  //   );
+  // }
 
-  function deleteGalleryImage(id: string) {
-    setGalleryImages((prev) => {
-      const target = prev.find((img) => img.id === id);
-      if (!target) return prev;
-      revokeIfBlob(target.url);
-      if (target.public_id) {
-        setDeletedPublicIds((ids) => [...ids, target.public_id!]);
-      }
-      return prev.filter((img) => img.id !== id);
-    });
-  }
+  // function deleteGalleryImage(id: string) {
+  //   setGalleryImages((prev) => {
+  //     const target = prev.find((img) => img.id === id);
+  //     if (!target) return prev;
+  //     revokeIfBlob(target.url);
+  //     if (target.public_id) {
+  //       setDeletedPublicIds((ids) => [...ids, target.public_id!]);
+  //     }
+  //     return prev.filter((img) => img.id !== id);
+  //   });
+  // }
 
-  function addGalleryImage(file: File) {
-    setGalleryImages((prev) => [
-      ...prev,
-      { id: makeId(), url: URL.createObjectURL(file), file },
-    ]);
-  }
+  // function addGalleryImage(file: File) {
+  //   setGalleryImages((prev) => [
+  //     ...prev,
+  //     { id: makeId(), url: URL.createObjectURL(file), file },
+  //   ]);
+  // }
 
   // Detect changes + build FormData 
 

@@ -59,15 +59,15 @@ export interface ImageType {
   public_id: string;
 }
 
-export interface PostType {
-  _id: string;
-  postId: string
-  title: string;
-  content: string;
-  images: ImageType[];
-  createdAt: string;
-  updatedAt: string;
-}
+// export interface PostType {
+//   _id: string;
+//   postId: string
+//   title: string;
+//   content: string;
+//   images: ImageType[];
+//   createdAt: string;
+//   updatedAt: string;
+// }
 
 export interface IProjectData {
   _id: string;

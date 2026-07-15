@@ -6,7 +6,6 @@ import {
   FaAngleLeft,
   FaAngleRight,
   FaHome,
-  FaInfo,
   FaPlus,
   FaEnvelope,
 } from "react-icons/fa";

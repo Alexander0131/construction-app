@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { PostType, IPostData } from "../../service/types";
+import type { IPostData } from "../../service/types";
 import { getLimitedPosts } from "../../service/api";
 
 export default function DashPosts() {

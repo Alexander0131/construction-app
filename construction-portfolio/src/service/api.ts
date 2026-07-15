@@ -6,7 +6,6 @@ import type {
   IPostData,
   IProjectData,
   MessageState,
-  PostType,
   ViewCountState,
 } from "./types";
 
