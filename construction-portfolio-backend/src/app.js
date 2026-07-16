@@ -11,6 +11,10 @@ const messageRoutes = require("./routes/sendMessage.route");
 
 const app = express(); 
 
+app.get("/api/debug-env", (_req, res) => {
+  res.json({ clientUrl: process.env.CLIENT_URL });
+});
+
 const productionOrigin = process.env.CLIENT_URL; // e.g. https://construction-app.vercel.app
 
 app.use(
