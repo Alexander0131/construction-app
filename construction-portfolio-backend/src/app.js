@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");  // commented out temporarily for debugging
 const fileUpload = require("express-fileupload");
 const { clerkMiddleware } = require("@clerk/express");
 
@@ -15,37 +15,26 @@ app.get("/api/debug-env", (_req, res) => {
   res.json({ clientUrl: process.env.CLIENT_URL });
 });
 
-const productionOrigin = process.env.CLIENT_URL; // e.g. https://construction-app.vercel.app
-
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (
-      !origin ||
-      origin === process.env.CLIENT_URL ||
-      /^https:\/\/construction-mat0unysk-alexander-samuel-s-projects\.vercel\.app$/.test(origin) ||
-      /^https:\/\/construction-.*-alexander-samuel-s-projects\.vercel\.app$/.test(origin)
-    ) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-}));
-
+// CORS temporarily disabled - just adding permissive headers manually for testing
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Populates req.auth from the Clerk session token, when present.
 app.use(clerkMiddleware());
 
 app.use(
   fileUpload({
     useTempFiles: true,
     tempFileDir: "/tmp/",
-    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB per file
+    limits: { fileSize: 10 * 1024 * 1024 },
   })
 );
 
@@ -61,7 +50,6 @@ app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
-// Centralized error handler - controllers can just `next(err)`.
 app.use((err, _req, res, _next) => {
   console.error(err);
   const status = err.status || 500;
