@@ -11,12 +11,16 @@ const messageRoutes = require("./routes/sendMessage.route");
 
 const app = express(); 
 
-const allowedOrigins = (process.env.CLIENT_URL || "").split(",");
+const productionOrigin = process.env.CLIENT_URL; // e.g. https://construction-app.vercel.app
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (
+        !origin ||
+        origin === productionOrigin ||
+        /^https:\/\/construction-[a-z0-9]+-alexander-samuel-s-projects\.vercel\.app$/.test(origin)
+      ) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
@@ -25,7 +29,6 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
