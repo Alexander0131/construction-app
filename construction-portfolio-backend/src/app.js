@@ -17,22 +17,12 @@ app.get("/api/debug-env", (_req, res) => {
 
 const productionOrigin = process.env.CLIENT_URL; // e.g. https://construction-app.vercel.app
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (
-        !origin ||
-        origin === productionOrigin ||
-        /^https:\/\/construction-[a-z0-9]+-alexander-samuel-s-projects\.vercel\.app$/.test(origin)
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: ['https://construction-mat0unysk-alexander-samuel-s-projects.vercel.app'],
+  credentials: true
+}));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
