@@ -14,7 +14,7 @@ const app = express();
 const productionOrigin = process.env.CLIENT_URL; 
 
 app.use(cors({
-  origin: [productionOrigin],
+  origin: ['https://construction-app-umber.vercel.app'],
   credentials: true
 }));
 
