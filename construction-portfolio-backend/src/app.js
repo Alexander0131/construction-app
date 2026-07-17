@@ -16,7 +16,7 @@ app.get("/api/debug-env", (_req, res) => {
 });
 
 const productionOrigin = process.env.CLIENT_URL; 
-
+ 
 app.use(cors({
   origin: ['https://construction-app-umber.vercel.app', 'http://localhost:5173'],
   credentials: true

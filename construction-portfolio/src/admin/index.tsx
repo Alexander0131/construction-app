@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { UserButton } from "@clerk/clerk-react";
 import { FaThList } from "react-icons/fa";
 import {
-  FaAngleLeft,
+  FaAngleLeft, 
   FaAngleRight,
   FaHome,
   FaPlus,
