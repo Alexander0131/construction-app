@@ -11,7 +11,7 @@ const messageRoutes = require("./routes/sendMessage.route");
 
 const app = express(); 
 
-app.get("/api/debug-env", (_req, res) => {
+/* app.get("/api/debug-env", (_req, res) => {
   res.json({ clientUrl: process.env.CLIENT_URL });
 });
 
@@ -39,6 +39,11 @@ app.use(
     credentials: true,
   })
 );
+*/
+
+
+app.use(cors())
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
