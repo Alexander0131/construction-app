@@ -20,8 +20,8 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-slate-300">
-          {FOOTER_LINKS.map(({tag, to }) => (
-            <Link key={to} to={to} className="hover:text-white transition">
+          {FOOTER_LINKS.map(({tag, to, label }) => (
+            <Link key={label} to={to} className="hover:text-white transition">
               {tag}
             </Link>
           ))}
