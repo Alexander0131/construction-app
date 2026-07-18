@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-// import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 import { registerAuthTokenGetter } from "../service/api";
 
 /**
@@ -8,12 +8,12 @@ import { registerAuthTokenGetter } from "../service/api";
  * Mount once, inside <ClerkProvider>.
  */
 export default function ClerkTokenSync() {
-  // const { getToken } = useAuth();
+  const { getToken } = useAuth();
 
-  // useEffect(() => {
-  //   registerAuthTokenGetter(() => getToken());
-  //   return () => registerAuthTokenGetter(null);
-  // }, [getToken]);
+  useEffect(() => {
+    registerAuthTokenGetter(() => getToken());
+    return () => registerAuthTokenGetter(null);
+  }, [getToken]);
 
   return null;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-// import { UserButton } from "@clerk/clerk-react";
+import { UserButton } from "@clerk/clerk-react";
 import { FaThList } from "react-icons/fa";
 import {
   FaAngleLeft, 
@@ -45,7 +45,7 @@ export default function AdminHomePage() {
         <span className="text-2xl sm:text-3xl font-bold text-yellow-500">DremCons.</span>
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline text-white">Admin</span>
-          {/* <UserButton afterSignOutUrl="/admin/sign-in" /> */}
+          <UserButton afterSignOutUrl="/admin/sign-in" />
         </div>
       </div>
 
