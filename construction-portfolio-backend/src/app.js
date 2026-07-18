@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-const { clerkMiddleware } = require("@clerk/express");
+// const { clerkMiddleware } = require("@clerk/express");
 
 const projectRoutes = require("./routes/projects.routes");
 const configRoutes = require("./routes/config.routes");
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Populates req.auth from the Clerk session token, when present.
-app.use(clerkMiddleware());
+// app.use(clerkMiddleware());
 
 app.use(
   fileUpload({
