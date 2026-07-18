@@ -15,13 +15,13 @@ app.get("/api/debug-env", (_req, res) => {
   res.json({ clientUrl: process.env.CLIENT_URL });
 });
 
-const productionOrigin = process.env.CLIENT_URL; 
+// const productionOrigin = process.env.CLIENT_URL; 
  
-app.use(cors({
-  origin: ['https://construction-app-umber.vercel.app', 'http://localhost:5173'],
-  credentials: true
-}));
-
+// app.use(cors({
+//   origin: ['https://construction-app-umber.vercel.app', 'http://localhost:5173'],
+//   credentials: true
+// }));
+app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
