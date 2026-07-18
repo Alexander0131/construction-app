@@ -1,18 +1,18 @@
-import { SignIn, useAuth } from "@clerk/clerk-react";
+// import { SignIn, useAuth } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
 
 export default function AdminSignIn() {
-  const { isLoaded, isSignedIn } = useAuth();
+  // const { isLoaded, isSignedIn } = useAuth();
 
-  if (isLoaded && isSignedIn) {
-    return <Navigate to="/admin/company" replace />;
-  }
+  // if (isLoaded && isSignedIn) {
+  //   return <Navigate to="/admin/company" replace />;
+  // }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4 py-12">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-yellow-500 mb-8">DremCons. Admin</h1>
-        <SignIn
+        {/* <SignIn
           routing="path"
           path="/admin/sign-in"
           signUpUrl="/admin/sign-in"
@@ -29,7 +29,7 @@ export default function AdminSignIn() {
               card: "shadow-2xl rounded-2xl",
             },
           }}
-        />
+        /> */}
       </div>
     </div>
   );

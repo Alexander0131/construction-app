@@ -14,7 +14,7 @@ const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000/api";
 export const apiClient = axios.create({ baseURL: API_URL });
 
 // Lets a component inside <ClerkProvider> hand us a token getter without
-// every call site needing to know about Clerk. See src/lib/clerkTokenSync.ts.
+// every call site needing to know about Clerk. See src/lib/TokenSync.ts.
 let getAuthToken: (() => Promise<string | null>) | null = null;
 
 export function registerAuthTokenGetter(fn: typeof getAuthToken) {
