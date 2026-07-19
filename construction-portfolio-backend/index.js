@@ -1,14 +1,10 @@
-// require("dotenv").config();
-
-
-require("dotenv").config();
-
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const { clerkMiddleware } = require("@clerk/express");
-
+dotenv.config();
 // const dns = require("dns");
 
 // dns.setServers(["8.8.8.8", "8.8.4.4"]);
