@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const mongoose = require("mongoose");
 const app = require("./app");
-
+console.log("first")
 const PORT = process.env.PORT || 5000;
 
 if (!process.env.MONGO_URI) {
