@@ -9,9 +9,9 @@ const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const { clerkMiddleware } = require("@clerk/express");
 
-const dns = require("dns");
+// const dns = require("dns");
 
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+// dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 // Routes
 const projectRoutes = require("./src/routes/projects.routes");
@@ -66,23 +66,23 @@ app.use(
 /* Utility Routes                                             */
 /* ---------------------------------------------------------- */
 
-app.get("/favicon.ico", (_req, res) => {
-  res.status(204).end();
-});
+// app.get("/favicon.ico", (_req, res) => {
+//   res.status(204).end();
+// });
 
-app.get("/api/health", (_req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Server is healthy.",
-  });
-});
+// app.get("/api/health", (_req, res) => {
+//   res.status(200).json({
+//     success: true,
+//     message: "Server is healthy.",
+//   });
+// });
 
-app.get("/api/debug-env", (_req, res) => {
-  res.json({
-    clientUrl: process.env.CLIENT_URL || null,
-    nodeEnv: process.env.NODE_ENV || "development",
-  });
-});
+// app.get("/api/debug-env", (_req, res) => {
+//   res.json({
+//     clientUrl: process.env.CLIENT_URL || null,
+//     nodeEnv: process.env.NODE_ENV || "development",
+//   });
+// });
 
 /* ---------------------------------------------------------- */
 /* API Routes                                                 */
@@ -148,16 +148,16 @@ async function startServer() {
 /* Process Error Handling                                     */
 /* ---------------------------------------------------------- */
 
-process.on("unhandledRejection", (reason) => {
-  console.error("❌ Unhandled Promise Rejection");
-  console.error(reason);
-});
+// process.on("unhandledRejection", (reason) => {
+//   console.error("❌ Unhandled Promise Rejection");
+//   console.error(reason);
+// });
 
-process.on("uncaughtException", (error) => {
-  console.error("❌ Uncaught Exception");
-  console.error(error);
+// process.on("uncaughtException", (error) => {
+//   console.error("❌ Uncaught Exception");
+//   console.error(error);
 
-  process.exit(1);
-});
+//   process.exit(1);
+// });
 
 startServer();
