@@ -1,26 +1,28 @@
+// require("dotenv").config();
+
+
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const { clerkMiddleware } = require("@clerk/express");
-dotenv.config();
-// const dns = require("dns");
 
-// dns.setServers(["8.8.8.8", "8.8.4.4"]);
+const dns = require("dns");
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 // Routes
 const projectRoutes = require("./src/routes/projects.routes");
 const configRoutes = require("./src/routes/config.routes");
-// const postRoutes = require("./src/routes/post.routes");
+const postRoutes = require("./src/routes/post.routes");
 const viewCountRoutes = require("./src/routes/viewcount.routes");
 const messageRoutes = require("./src/routes/sendMessage.route");
 
 const app = express();
-// const PORT = process.env.PORT || 5000;
-const PORT = 5000;
-// const MONGO_URI = process.env.MONGO_URI;
-const MONGO_URI = "mongodb+srv://acidinit_db_user:wAPCEa@dremlog.ut09ifo.mongodb.net/?appName=Dremlog";
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI;
 
 /* ---------------------------------------------------------- */
 /* Environment Validation                                     */
@@ -88,7 +90,7 @@ app.get("/api/debug-env", (_req, res) => {
 
 app.use("/api/projects", projectRoutes);
 app.use("/api/config", configRoutes);
-// app.use("/api/posts", postRoutes);
+app.use("/api/posts", postRoutes);
 app.use("/api/count", viewCountRoutes);
 app.use("/api/message", messageRoutes);
 
@@ -96,25 +98,25 @@ app.use("/api/message", messageRoutes);
 /* 404 Handler                                                */
 /* ---------------------------------------------------------- */
 
-// app.use((req, res) => {
-//   res.status(404).json({
-//     success: false,
-//     message: `Route '${req.originalUrl}' not found.`,
-//   });
-// });
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route '${req.originalUrl}' not found.`,
+  });
+});
 
 /* ---------------------------------------------------------- */
 /* Global Error Handler                                       */
 /* ---------------------------------------------------------- */
 
-// app.use((err, req, res, next) => {
-//   console.error("❌ Error:", err);
+app.use((err, req, res, next) => {
+  console.error("❌ Error:", err);
 
-//   res.status(err.status || 500).json({
-//     success: false,
-//     message: err.message || "Internal Server Error",
-//   });
-// });
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
+});
 
 /* ---------------------------------------------------------- */
 /* Start Server                                               */
@@ -130,15 +132,15 @@ async function startServer() {
 
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);
-      // console.log(
-      //   `🌍 Environment: ${process.env.NODE_ENV || "development"}`
-      // );
+      console.log(
+        `🌍 Environment: ${process.env.NODE_ENV || "development"}`
+      );
     });
   } catch (error) {
     console.error("❌ Failed to start server.");
     console.error(error);
 
-    // process.exit(1);
+    process.exit(1);
   }
 }
 
@@ -146,16 +148,16 @@ async function startServer() {
 /* Process Error Handling                                     */
 /* ---------------------------------------------------------- */
 
-// process.on("unhandledRejection", (reason) => {
-//   console.error("❌ Unhandled Promise Rejection");
-//   console.error(reason);
-// });
+process.on("unhandledRejection", (reason) => {
+  console.error("❌ Unhandled Promise Rejection");
+  console.error(reason);
+});
 
-// process.on("uncaughtException", (error) => {
-//   console.error("❌ Uncaught Exception");
-//   console.error(error);
+process.on("uncaughtException", (error) => {
+  console.error("❌ Uncaught Exception");
+  console.error(error);
 
-//   process.exit(1);
-// });
+  process.exit(1);
+});
 
 startServer();

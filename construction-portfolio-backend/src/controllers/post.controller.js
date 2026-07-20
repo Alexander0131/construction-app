@@ -1,6 +1,7 @@
 const cloudinary = require("../config/cloudinary");
 const Post = require("../models/Post");
-const { nanoid } = require("nanoid");
+// const { nanoid } = require("nanoid");
+const crypto = require("crypto");
 
 const TEXT_FIELDS = [
   "postTitle",
@@ -37,7 +38,7 @@ exports.createPost = async (req, res, next) => {
 
     const post = await Post.create({
       postTitle: title,
-      postId: `post-${nanoid(10)}`,
+      postId: `post-${crypto.randomUUID()}`,
       description,
       contentTitle,
       contentTitleTwo,

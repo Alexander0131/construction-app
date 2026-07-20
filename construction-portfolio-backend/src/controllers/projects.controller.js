@@ -1,7 +1,7 @@
 const cloudinary = require("../config/cloudinary");
 const Project = require("../models/Projects");
-const { nanoid } = require("nanoid");
-
+// const { nanoid } = require("nanoid");
+const crypto = require("crypto");
 
 const TEXT_FIELDS = [
   "projectTitle",
@@ -73,7 +73,7 @@ exports.createProject = async (req, res, next) => {
 
     const project = await Project.create({
       projectTitle: title,
-      projectId: `project-${nanoid(10)}`,
+      projectId: `project-${crypto.randomUUID()}`,
       description,
       contentTitle,
       contentTitleTwo,
