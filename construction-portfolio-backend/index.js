@@ -107,14 +107,14 @@ app.use((req, res) => {
 /* Global Error Handler                                       */
 /* ---------------------------------------------------------- */
 
-app.use((err, req, res, next) => {
-  console.error("❌ Error:", err);
+// app.use((err, req, res, next) => {
+//   console.error("❌ Error:", err);
 
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || "Internal Server Error",
-  });
-});
+//   res.status(err.status || 500).json({
+//     success: false,
+//     message: err.message || "Internal Server Error",
+//   });
+// });
 
 /* ---------------------------------------------------------- */
 /* Start Server                                               */
