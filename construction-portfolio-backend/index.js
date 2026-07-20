@@ -10,11 +10,11 @@ const { clerkMiddleware } = require("@clerk/express");
 // dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 // Routes
-// const projectRoutes = require("./src/routes/projects.routes");
-// const configRoutes = require("./src/routes/config.routes");
-// const postRoutes = require("./src/routes/post.routes");
-// const viewCountRoutes = require("./src/routes/viewcount.routes");
-// const messageRoutes = require("./src/routes/sendMessage.route");
+const projectRoutes = require("./src/routes/projects.routes");
+const configRoutes = require("./src/routes/config.routes");
+const postRoutes = require("./src/routes/post.routes");
+const viewCountRoutes = require("./src/routes/viewcount.routes");
+const messageRoutes = require("./src/routes/sendMessage.route");
 
 const app = express();
 // const PORT = process.env.PORT || 5000;
@@ -86,11 +86,11 @@ app.use(clerkMiddleware());
 /* API Routes                                                 */
 /* ---------------------------------------------------------- */
 
-// app.use("/api/projects", projectRoutes);
-// app.use("/api/config", configRoutes);
-// app.use("/api/posts", postRoutes);
-// app.use("/api/count", viewCountRoutes);
-// app.use("/api/message", messageRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/config", configRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/count", viewCountRoutes);
+app.use("/api/message", messageRoutes);
 
 /* ---------------------------------------------------------- */
 /* 404 Handler                                                */
