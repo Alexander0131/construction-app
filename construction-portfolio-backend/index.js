@@ -13,7 +13,7 @@ dotenv.config();
 // const projectRoutes = require("./src/routes/projects.routes");
 // const configRoutes = require("./src/routes/config.routes");
 // const postRoutes = require("./src/routes/post.routes");
-// const viewCountRoutes = require("./src/routes/viewcount.routes");
+const viewCountRoutes = require("./src/routes/viewcount.routes");
 const messageRoutes = require("./src/routes/sendMessage.route");
 
 const app = express();
@@ -89,7 +89,7 @@ app.get("/api/debug-env", (_req, res) => {
 // app.use("/api/projects", projectRoutes);
 // app.use("/api/config", configRoutes);
 // app.use("/api/posts", postRoutes);
-// app.use("/api/count", viewCountRoutes);
+app.use("/api/count", viewCountRoutes);
 app.use("/api/message", messageRoutes);
 
 /* ---------------------------------------------------------- */
