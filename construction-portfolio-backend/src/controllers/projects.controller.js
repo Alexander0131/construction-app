@@ -1,6 +1,6 @@
 const cloudinary = require("../config/cloudinary");
 const Project = require("../models/Projects");
-// const { nanoid } = require("nanoid");
+const { nanoid } = require("nanoid");
 
 
 const TEXT_FIELDS = [
