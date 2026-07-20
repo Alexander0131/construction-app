@@ -98,25 +98,25 @@ app.use("/api/message", messageRoutes);
 /* 404 Handler                                                */
 /* ---------------------------------------------------------- */
 
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: `Route '${req.originalUrl}' not found.`,
-  });
-});
+// app.use((req, res) => {
+//   res.status(404).json({
+//     success: false,
+//     message: `Route '${req.originalUrl}' not found.`,
+//   });
+// });
 
 /* ---------------------------------------------------------- */
 /* Global Error Handler                                       */
 /* ---------------------------------------------------------- */
 
-app.use((err, req, res, next) => {
-  console.error("❌ Error:", err);
+// app.use((err, req, res, next) => {
+//   console.error("❌ Error:", err);
 
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || "Internal Server Error",
-  });
-});
+//   res.status(err.status || 500).json({
+//     success: false,
+//     message: err.message || "Internal Server Error",
+//   });
+// });
 
 /* ---------------------------------------------------------- */
 /* Start Server                                               */
