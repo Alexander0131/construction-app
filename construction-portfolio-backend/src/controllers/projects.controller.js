@@ -1,5 +1,5 @@
-// const cloudinary = require("../config/cloudinary");
-// const Project = require("../models/Projects");
+const cloudinary = require("../config/cloudinary");
+const Project = require("../models/Projects");
 // const { nanoid } = require("nanoid");
 
 
