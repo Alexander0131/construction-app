@@ -146,16 +146,16 @@ async function startServer() {
 /* Process Error Handling                                     */
 /* ---------------------------------------------------------- */
 
-process.on("unhandledRejection", (reason) => {
-  console.error("❌ Unhandled Promise Rejection");
-  console.error(reason);
-});
+// process.on("unhandledRejection", (reason) => {
+//   console.error("❌ Unhandled Promise Rejection");
+//   console.error(reason);
+// });
 
-process.on("uncaughtException", (error) => {
-  console.error("❌ Uncaught Exception");
-  console.error(error);
+// process.on("uncaughtException", (error) => {
+//   console.error("❌ Uncaught Exception");
+//   console.error(error);
 
-  process.exit(1);
-});
+//   process.exit(1);
+// });
 
 startServer();
