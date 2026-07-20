@@ -1,9 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-const { clerkMiddleware } = require("@clerk/express");
+// const { clerkMiddleware } = require("@clerk/express");
 dotenv.config();
 // const dns = require("dns");
 
@@ -18,16 +18,16 @@ const messageRoutes = require("./src/routes/sendMessage.route");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+// const MONGO_URI = process.env.MONGO_URI;
 
 /* ---------------------------------------------------------- */
 /* Environment Validation                                     */
 /* ---------------------------------------------------------- */
 
-if (!MONGO_URI) {
-  console.error("❌ Missing required environment variable: MONGO_URI");
-  process.exit(1);
-}
+// if (!MONGO_URI) {
+//   console.error("❌ Missing required environment variable: MONGO_URI");
+//   process.exit(1);
+// }
 
 /* ---------------------------------------------------------- */
 /* Middleware                                                 */
@@ -46,7 +46,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(clerkMiddleware());
+// app.use(clerkMiddleware());
 
 app.use(
   fileUpload({
@@ -122,9 +122,9 @@ async function startServer() {
   try {
     console.log("🚀 Starting server...");
 
-    await mongoose.connect(MONGO_URI);
+    // await mongoose.connect(MONGO_URI);
 
-    console.log("✅ MongoDB connected.");
+    // console.log("✅ MongoDB connected.");
 
     app.listen(PORT, () => {
       console.log(`✅ Server running on port ${PORT}`);
