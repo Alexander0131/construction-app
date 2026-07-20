@@ -37,15 +37,17 @@ if (!MONGO_URI) {
 /* Middleware                                                 */
 /* ---------------------------------------------------------- */
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://construction-app-umber.vercel.app",
-    ],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://construction-app-umber.vercel.app",
+//     ],
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
