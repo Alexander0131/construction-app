@@ -1,7 +1,7 @@
 const express = require("express");
 const requireAdmin = require("../middleware/requireAdmin");
 const {
-  getProjects,
+  // getProjects,
 //   createProject,
 //   getSingleProjects,
 //   updateProject,
@@ -11,7 +11,7 @@ const {
 const router = express.Router();
 
 // // Public reads
-router.get("/", getProjects);
+// router.get("/", getProjects);
 // router.get("/:id", getSingleProjects);
 
 // // Admin-only writes
