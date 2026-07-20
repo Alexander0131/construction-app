@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
+const dotenv = require("dotenv");
 const cors = require("cors");
-// const fileUpload = require("express-fileupload");
+const fileUpload = require("express-fileupload");
 const { clerkMiddleware } = require("@clerk/express");
-// dotenv.config();
+dotenv.config();
 // const dns = require("dns");
 
 // dns.setServers(["8.8.8.8", "8.8.4.4"]);
@@ -46,41 +46,41 @@ app.use(
 );
 
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(clerkMiddleware());
 
-// app.use(
-//   fileUpload({
-//     useTempFiles: true,
-//     tempFileDir: "/tmp/",
-//     limits: {
-//       fileSize: 10 * 1024 * 1024, // 10MB
-//     },
-//   })
-// );
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+    limits: {
+      fileSize: 10 * 1024 * 1024, // 10MB
+    },
+  })
+);
 
 /* ---------------------------------------------------------- */
 /* Utility Routes                                             */
 /* ---------------------------------------------------------- */
 
-// app.get("/favicon.ico", (_req, res) => {
-//   res.status(204).end();
-// });
+app.get("/favicon.ico", (_req, res) => {
+  res.status(204).end();
+});
 
-// app.get("/api/health", (_req, res) => {
-//   res.status(200).json({
-//     success: true,
-//     message: "Server is healthy.",
-//   });
-// });
+app.get("/api/health", (_req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is healthy.",
+  });
+});
 
-// app.get("/api/debug-env", (_req, res) => {
-//   res.json({
-//     clientUrl: process.env.CLIENT_URL || null,
-//     nodeEnv: process.env.NODE_ENV || "development",
-//   });
-// });
+app.get("/api/debug-env", (_req, res) => {
+  res.json({
+    clientUrl: process.env.CLIENT_URL || null,
+    nodeEnv: process.env.NODE_ENV || "development",
+  });
+});
 
 /* ---------------------------------------------------------- */
 /* API Routes                                                 */
@@ -96,25 +96,25 @@ app.use(clerkMiddleware());
 /* 404 Handler                                                */
 /* ---------------------------------------------------------- */
 
-// app.use((req, res) => {
-//   res.status(404).json({
-//     success: false,
-//     message: `Route '${req.originalUrl}' not found.`,
-//   });
-// });
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route '${req.originalUrl}' not found.`,
+  });
+});
 
 /* ---------------------------------------------------------- */
 /* Global Error Handler                                       */
 /* ---------------------------------------------------------- */
 
-// app.use((err, req, res, next) => {
-//   console.error("❌ Error:", err);
+app.use((err, req, res, next) => {
+  console.error("❌ Error:", err);
 
-//   res.status(err.status || 500).json({
-//     success: false,
-//     message: err.message || "Internal Server Error",
-//   });
-// });
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
+});
 
 /* ---------------------------------------------------------- */
 /* Start Server                                               */
@@ -146,16 +146,16 @@ async function startServer() {
 /* Process Error Handling                                     */
 /* ---------------------------------------------------------- */
 
-// process.on("unhandledRejection", (reason) => {
-//   console.error("❌ Unhandled Promise Rejection");
-//   console.error(reason);
-// });
+process.on("unhandledRejection", (reason) => {
+  console.error("❌ Unhandled Promise Rejection");
+  console.error(reason);
+});
 
-// process.on("uncaughtException", (error) => {
-//   console.error("❌ Uncaught Exception");
-//   console.error(error);
+process.on("uncaughtException", (error) => {
+  console.error("❌ Uncaught Exception");
+  console.error(error);
 
-//   process.exit(1);
-// });
+  process.exit(1);
+});
 
 startServer();
